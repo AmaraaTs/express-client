@@ -38,6 +38,26 @@ const UserList = () => {
     getEmployeesData();
   };
 
+  const putEmployee = async (id) => {
+    const res = await fetch(`http://localhost:8000/users/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname: "Naruto",
+        lastname: "Uzumaki",
+        email: "narutoisnaruto@gmail.com",
+        position: "Carry",
+        profileImg: "https://img.daisyui.com/images/profile/demo/2@94.webp",
+      }),
+    });
+    const { user } = await res.json(res);
+    console.log("Put", user);
+    getEmployeesData();
+  };
+
   useEffect(() => {
     getEmployeesData(), deleteEmployee();
   }, []);
@@ -50,7 +70,11 @@ const UserList = () => {
         </thead>
         <tbody>
           {users?.map((user) => (
-            <UserRow user={user} deleteEmployee={deleteEmployee} />
+            <UserRow
+              user={user}
+              deleteEmployee={deleteEmployee}
+              putEmployee={putEmployee}
+            />
           ))}
         </tbody>
       </table>
