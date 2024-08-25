@@ -5,7 +5,7 @@ const UserHeader = () => {
     <tr>
       <th>Зураг</th>
       <th>Нэр</th>
-      <th>Албан тушаал</th>
+      <th>Байрлал</th>
       <th>Цахим хаяг</th>
       <th>Үйлдэл</th>
       <th></th>
